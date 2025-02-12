@@ -14,9 +14,9 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      platform: aws
-      region: us-east-1
-      account: 123456789012
+
+      username: ${{ secrets.USERNAME }}
+      password: ${{ secrets.PASSWORD }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -26,11 +26,9 @@ jobs:
         run: echo "Hola mundo"
 
       - name: "Mostrando variables"
-        if: ${{ env.platform == 'aws' }}
         run: |
-          echo "Esto es el valor de platform: ${{ env.platform }}"
-          echo "Esto es el valor de region: ${{ env.region }}"
-          echo "Esto es el valor de account: ${{ env.account }}"
+          echo "Este es el valor de la variable USERNAME: ${{env.USERNAME}}"
+          echo "Este es el valor de la variable PASSWORD: ${{env.PASSWORD}}"
 
       - name: "Mostrando variables por defecto"
         run: |
